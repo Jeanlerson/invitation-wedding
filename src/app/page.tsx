@@ -1,5 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Carousel } from "@/components/ui/carousel";
+import { Great_Vibes } from "next/font/google";
+
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export default function Page() {
   return (
