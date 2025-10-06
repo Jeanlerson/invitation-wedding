@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Carousel } from "@/components/ui/carousel";
 import { Input } from "@/components/ui/input";
 import { Great_Vibes } from "next/font/google";
+import { Header } from "./_components/header";
 
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -11,6 +12,11 @@ const greatVibes = Great_Vibes({
 
 export default function Page() {
   return (
+    <main className="min-h-screen min-w-screen bg-[#003366]">
+      <Header/>
+    </main>
+    
+    /*
     <div className="flex justify-center min-h-screen min-w-screen bg-[#003366]">
       <div className="bg-[#000D33] min-w-[1140] min-h-screen p-5">
         <h1 className="font-great-vibes text-8xl text-[#5CADFF]">Convite de Casamento</h1>
@@ -28,5 +34,6 @@ export default function Page() {
         <Carousel className="mt-10" />
       </div>
     </div>
+    */
   );
 };
