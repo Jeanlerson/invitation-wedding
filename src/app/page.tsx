@@ -12,8 +12,10 @@ const greatVibes = Great_Vibes({
 
 export default function Page() {
   return (
-    <main className="min-h-screen min-w-screen bg-[#003366]">
-      <Header/>
+    <main className="min-h-screen min-w-screen bg-[#003366] flex justify-center">
+      <div className="w-[1140] min-h-screen">
+        <Header />
+      </div>
     </main>
     
     /*
