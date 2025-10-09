@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Carousel } from "@/components/ui/carousel";
 import { Input } from "@/components/ui/input";
 import { Great_Vibes } from "next/font/google";
 import { Header } from "./_components/header";
+import { Invitation } from "./_components/invitation";
+import { Confirm } from "./_components/confirm";
 
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -15,6 +16,10 @@ export default function Page() {
     <main className="min-h-screen min-w-screen bg-[#003366] flex justify-center">
       <div className="w-[1140] min-h-screen">
         <Header />
+        <div className="flex justify-between">
+          <Invitation />
+          <Confirm />
+        </div>
       </div>
     </main>
     
