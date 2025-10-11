@@ -21,9 +21,9 @@ export function Invitation() {
 
 
     return (
-        <section className="w-[820] bg-[#000D33] rounded-3xl">
-            <h1 className="mt-8 text-center font-great-vibes text-7xl text-[#5CADFF]">Convite de Casamento</h1>
-            <div className="flex justify-center pl-15">                
+        <section className="w-[820]  rounded-3xl">
+            
+            <div className="flex justify-center">                
                 <Carousel className="w-full max-w-full bg-transparent rounded-3xl">
                     <CarouselContent>
                         {img.map((src, index) => (
@@ -47,9 +47,9 @@ export function Invitation() {
                     <CarouselPrevious />
                     <CarouselNext />
                 </Carousel>
-                <div className="ml-15 mt-6 mr-5 text-white text-justify">
-                    <p className="font-poppins text-xl">Convidamos você para celebrar conosco um dos dias mais especiais de nossas vidas! <span className="text-[#005CB8]">No dia 20 de Dezembro às 15 horas</span>, estaremos celebrando nosso casamento.</p>
-                    <p className="mt-10 font-great-vibes text-2xl">" Para que todos vejam, e saibam, e considerem, e juntamente entendam que a mão do Senhor fez isso, e o Santo de Israel o criou. "</p>
+                <div className="ml-20 mt-6 mr-5 text-[#000D33]">
+                    <p className="font-poppins text-xl text-justify">Convidamos você para celebrar conosco um dos dias mais especiais de nossas vidas! <span className="text-[#005CB8]">No dia 20 de Dezembro às 15 horas</span>, estaremos celebrando nosso casamento.</p>
+                    <p className="mt-10 font-great-vibes text-2xl text-center">" Para que todos vejam, e saibam, e considerem, e juntamente entendam que a mão do Senhor fez isso, e o Santo de Israel o criou. "</p>
                     <p className="mt-2 font-great-vibes text-1xl text-right">Isaías 41:20</p>
                     <Countdown />
                 </div>

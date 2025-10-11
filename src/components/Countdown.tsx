@@ -42,7 +42,7 @@ export function Countdown() {
   return (
     <Card className="text-center bg-transparent border-0">
       <CardHeader>
-        <CardTitle className="text-4xl font-great-vibes text-[#5CADFF]">
+        <CardTitle className="text-4xl font-great-vibes text-[#000D33]">
           Contagem Regressiva
         </CardTitle>
       </CardHeader>
@@ -61,7 +61,7 @@ export function Countdown() {
               transition={{ duration: 0.3 }}
               className="flex flex-col items-center"
             >
-              <span className="text-4xl font-poppins text-white transition-all duration-500">
+              <span className="text-4xl font-poppins text-[#000D33] transition-all duration-500">
                 {value.toString().padStart(2, "0")}
               </span>
               <span className="font-poppins text-sm text-gray-600 mt-1 tracking-wider uppercase">
