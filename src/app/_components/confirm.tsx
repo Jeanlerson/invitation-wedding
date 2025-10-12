@@ -5,9 +5,9 @@ import { Label } from "@/components/ui/label"
 
 export function Confirm() {
   return (
-    <Card className="w-[320px] bg-[#000D33] text-white rounded-3xl border-none shadow-lg">
+    <Card className="w-[320px] bg-[#000D33] text-white rounded-3xl border-none font-poppins shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
       <CardHeader>
-        <CardTitle className="text-center text-xl font-semibold">
+        <CardTitle className="text-center text-xl">
           Confirme sua presença
         </CardTitle>
       </CardHeader>
@@ -42,7 +42,7 @@ export function Confirm() {
           variant="secondary"
           className="w-full rounded-full bg-white text-[#000D33] hover:bg-gray-200"
         >
-          Esqueci meu presente
+          Selecione um presente
         </Button>
 
         <Button

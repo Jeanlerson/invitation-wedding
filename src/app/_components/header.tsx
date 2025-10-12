@@ -1,6 +1,6 @@
 export function Header() {
     return (
-        <section className=" pt-5 pb-5 flex justify-between items-center bg-[#000D33] px-10 shadow-lg mb-10">
+        <section className=" pt-5 pb-5 flex justify-between items-center bg-[#000D33] px-10 mb-10 shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
             <p className="font-great-vibes text-3xl text-[#5CADFF]">J + G</p>
             <div>
                 <ul className="flex space-x-4 text-white font-poppins ">
