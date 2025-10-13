@@ -21,15 +21,15 @@ export function Invitation() {
 
 
     return (
-        <section className="w-[820]  rounded-3xl">
+        <section className="w-[820]">
             
             <div className="flex justify-center">                
-                <Carousel className="w-full max-w-full bg-transparent rounded-3xl">
+                <Carousel className="w-full max-w-full  bg-[#fff] shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
                     <CarouselContent>
                         {img.map((src, index) => (
                             <CarouselItem key={index}>
                                 <div className="p-1">
-                                    <Card className="bg-transparent border-0">
+                                    <Card className="border-0">
                                         <CardContent className="flex items-center justify-center">
                                             <Image
                                                 src={src}
