@@ -40,13 +40,13 @@ export function Confirm() {
       <CardFooter className="flex flex-col gap-3">
         <Button
           variant="secondary"
-          className="w-full rounded-full bg-white text-[#000D33] hover:bg-gray-200"
+          className="w-full rounded-full bg-white text-[#000D33] hover:bg-gray-200 cursor-pointer"
         >
           Selecione um presente
         </Button>
 
         <Button
-          className="w-full rounded-full bg-[#001A66] hover:bg-[#002B99]"
+          className="w-full rounded-full bg-[#001A66] hover:bg-[#002B99] cursor-pointer"
         >
           Confirmar
         </Button>
