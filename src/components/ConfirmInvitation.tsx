@@ -19,6 +19,10 @@ export function ConfirmInvitation() {
             setErrorMsg("Por favor, insira seu nome.");
             return;
         }
+        if (companions < "0") {
+            setErrorMsg("Número de acompanhantes inválido.");
+            return;
+        }
 
         setLoading(true);
         setErrorMsg(null);
@@ -26,6 +30,7 @@ export function ConfirmInvitation() {
 
         try {
             const colRef = collection(db, "confirmations");
+            console.log("Enviando para o Firestore:", { name, companions });
             await addDoc(colRef, {
                 name: name.trim(),
                 companions: Number(companions) || 0,
@@ -40,11 +45,20 @@ export function ConfirmInvitation() {
         } finally {
             setLoading(false);
         }
-
-        return (
+    }
+    return (
             <div>
-                
+                <Confirm 
+                    name={name}
+                    companions={companions}
+                    setName={setName}
+                    setCompanions={setCompanions}
+                    onConfirm={handleConfirm}
+                />
+
+                <div className="sr-only" aria-live="polite">
+                    {loading ? "Enviando..." : sucessMsg ?? errorMsg ?? ""}
+                </div>
             </div>
         );
-    }
 }

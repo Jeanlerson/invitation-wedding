@@ -2,8 +2,11 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
+import type { ConfirmProps } from "@/types/confirm";
 
-export function Confirm() {
+export function Confirm(
+  { name, companions, setName, setCompanions, onConfirm }: ConfirmProps
+) {
   return (
     <Card className="w-[320px] bg-[#000D33] text-white rounded-3xl border-none font-poppins shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
       <CardHeader>
@@ -21,6 +24,8 @@ export function Confirm() {
             id="name"
             placeholder="Digite seu nome"
             className="text-black bg-white/90 focus-visible:ring-white"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
 
@@ -33,6 +38,8 @@ export function Confirm() {
             type="number"
             placeholder="Ex: 2"
             className="text-black bg-white/90 focus-visible:ring-white"
+            value={companions}
+            onChange={(e) => setCompanions(e.target.value)}
           />
         </div>
       </CardContent>
@@ -47,6 +54,7 @@ export function Confirm() {
 
         <Button
           className="w-full rounded-full bg-[#001A66] hover:bg-[#002B99] cursor-pointer"
+          onClick={onConfirm}
         >
           Confirmar
         </Button>

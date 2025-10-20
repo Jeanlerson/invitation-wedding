@@ -5,6 +5,7 @@ import { Great_Vibes } from "next/font/google";
 import { Header } from "./_components/header";
 import { Invitation } from "./_components/invitation";
 import { Confirm } from "./_components/confirm";
+import { ConfirmInvitation } from "@/components/ConfirmInvitation";
 
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -17,7 +18,7 @@ export default function Page() {
       <Header />        
       <div className="flex justify-center items-center flex-1">
         <Invitation />
-        <Confirm />
+        <ConfirmInvitation />
       </div>
     </main>
     
