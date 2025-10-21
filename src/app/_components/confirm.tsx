@@ -36,6 +36,7 @@ export function Confirm(
           <Input
             id="acompanhantes"
             type="number"
+            min="0"
             placeholder="Ex: 2"
             className="text-black bg-white/90 focus-visible:ring-white"
             value={companions}

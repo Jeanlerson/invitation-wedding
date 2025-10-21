@@ -15,18 +15,18 @@ export function ConfirmInvitation() {
     const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
     async function handleConfirm() {
-        if (!name) {
+        if (!name.trim()) {
             setErrorMsg("Por favor, insira seu nome.");
             return;
         }
-        if (companions < "0") {
+        if (Number(companions) < 0) {
             setErrorMsg("Número de acompanhantes inválido.");
             return;
         }
 
         setLoading(true);
-        setErrorMsg(null);
-        setSucessMsg(null);
+        setErrorMsg("");
+        setSucessMsg("");
 
         try {
             const colRef = collection(db, "confirmations");
@@ -45,6 +45,8 @@ export function ConfirmInvitation() {
         } finally {
             setLoading(false);
         }
+
+        
     }
     return (
             <div>
@@ -56,9 +58,15 @@ export function ConfirmInvitation() {
                     onConfirm={handleConfirm}
                 />
 
-                <div className="sr-only" aria-live="polite">
-                    {loading ? "Enviando..." : sucessMsg ?? errorMsg ?? ""}
-                </div>
+                {/* Mensagem de erro */}
+                {errorMsg && (
+                    <p className="text-red-500 text-sm font-medium mt-2">{errorMsg}</p>
+                )}
+
+                {/* Mensagem de sucesso */}
+                {sucessMsg && (
+                    <p className="text-green-500 text-sm font-medium mt-2">{sucessMsg}</p>
+                )}
             </div>
         );
 }
