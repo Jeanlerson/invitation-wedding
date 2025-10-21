@@ -1,4 +1,4 @@
-export function SelectObject () {
+export function SelectPresent () {
     const objects = [
         
     ]
