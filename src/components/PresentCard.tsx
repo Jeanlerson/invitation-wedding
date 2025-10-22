@@ -32,8 +32,8 @@ export function PresentCard({ onSelectPresent }: PresentProps) {
     };
 
     return (
-        <div>
-            ...
+        <div className="flex fle-col gap-4 mt-4">
+            
         </div>
     )
 }
