@@ -1,10 +1,14 @@
-export interface Present {
+export interface PresentModalProps {
     id: string;
     name: string;
     image: string;
-    available: boolean;
+    selected: boolean;
+    onSelect: (id: string) => void;
+    unavailable: boolean;
 }
 
-export interface PresentProps {
-    onSelectPresent: (present: Present) => void;
+export interface SelectPresentProps {
+    onClose: () => void;
+    onConfirm: (presentId: string) => void;
+    presents: { id: string; name: string; image: string; available: boolean }[];
 }
