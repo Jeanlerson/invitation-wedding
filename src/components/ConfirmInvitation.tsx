@@ -6,6 +6,8 @@ import { db } from "@/lib/firebase";
 import { Confirm } from "@/app/_components/confirm";
 import type { ConfirmProps } from "@/types/confirm";
 import { div } from "framer-motion/client";
+import SelectPresent from "./SelectPresent";
+import type { Present } from "@/types/present";
 
 export function ConfirmInvitation() {
     const [name, setName] = useState("");
@@ -14,13 +16,22 @@ export function ConfirmInvitation() {
     const [sucessMsg, setSucessMsg] = useState<string | null>(null);
     const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
+    const [selectedPresent, setSelectedPresent] = useState<Present | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+
     async function handleConfirm() {
-        if (!name.trim()) {
+        if(!name.trim()) {
             setErrorMsg("Por favor, insira seu nome.");
             return;
         }
-        if (Number(companions) < 0) {
+        if(Number(companions) < 0) {
             setErrorMsg("Número de acompanhantes inválido.");
+            return;
+        }
+        if(!selectedPresent) {
+            setErrorMsg("Por favor, selecione um presente antes de confirmar.");
             return;
         }
 
@@ -34,6 +45,8 @@ export function ConfirmInvitation() {
             await addDoc(colRef, {
                 name: name.trim(),
                 companions: Number(companions) || 0,
+                present: selectedPresent.name,
+                presentId: selectedPresent.id,
                 createdAt: serverTimestamp(),
             });
             setSucessMsg("Presença confirmada! Aguardamos por você.");
@@ -56,6 +69,28 @@ export function ConfirmInvitation() {
                     setName={setName}
                     setCompanions={setCompanions}
                     onConfirm={handleConfirm}
+                />
+
+                {/* Botão para Abrir Modal */}
+                <div className="mt-4">
+                    <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition"
+                    >
+                        {selectedPresent ? `Presente: ${selectedPresent.name}` : "Selecionar um presente"}
+                    </button>
+                </div>
+
+                {/* Modal de Seleção */}
+
+                <SelectPresent
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    selectedPresent={selectedPresent}
+                    onSelect={(present) => {
+                        setSelectedPresent(present);
+                        setIsModalOpen(false);
+                    }}
                 />
 
                 {/* Mensagem de erro */}
