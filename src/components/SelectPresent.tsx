@@ -18,6 +18,9 @@ export default function SelectPresent ({ onSelect, selectedPresent, isOpen, onCl
                 id: doc.id,
                 ...doc.data(),
             })) as Present[];
+
+            console.log("🎁 Presentes carregados do Firebase:", list);
+
             setPresents(list);
         });
 
