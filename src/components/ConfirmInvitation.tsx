@@ -69,17 +69,9 @@ export function ConfirmInvitation() {
                     setName={setName}
                     setCompanions={setCompanions}
                     onConfirm={handleConfirm}
+                    onSelectPresent={() => setIsModalOpen(true)}
+                    selectedPresent={selectedPresent}
                 />
-
-                {/* Botão para Abrir Modal */}
-                <div className="mt-4">
-                    <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition"
-                    >
-                        {selectedPresent ? `Presente: ${selectedPresent.name}` : "Selecionar um presente"}
-                    </button>
-                </div>
 
                 {/* Modal de Seleção */}
 

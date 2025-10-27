@@ -1,3 +1,5 @@
+import { Present } from "./present";
+
 // /src/types/confirm.ts
 export interface ConfirmProps {
   name: string;
@@ -5,4 +7,6 @@ export interface ConfirmProps {
   setName: (v: string) => void;
   setCompanions: (v: string) => void;
   onConfirm: () => Promise<void> | void;
+  onSelectPresent: () => void;
+  selectedPresent: Present | null;
 }

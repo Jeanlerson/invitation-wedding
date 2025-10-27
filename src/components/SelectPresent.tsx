@@ -56,7 +56,7 @@ export default function SelectPresent ({ onSelect, selectedPresent, isOpen, onCl
                         exit={{ scale: 0.8 }}
                     >
                         <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-xl font-semibold">Selecione um Present</h2>
+                            <h2 className="text-xl font-semibold">Selecione um Presente</h2>
                             <button onClick={onClose} className="text-gray-500 hover:text-gray-700">X</button>
                         </div>
 

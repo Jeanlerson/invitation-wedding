@@ -7,11 +7,6 @@ import { Invitation } from "./_components/invitation";
 import { Confirm } from "./_components/confirm";
 import { ConfirmInvitation } from "@/components/ConfirmInvitation";
 
-const greatVibes = Great_Vibes({
-  subsets: ["latin"],
-  weight: "400",
-});
-
 export default function Page() {
   return (
     <main className="min-h-screen min-w-screen flex flex-col">
