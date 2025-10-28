@@ -51,7 +51,7 @@ export function Confirm(
           className="w-full rounded-full bg-white text-[#000D33] hover:bg-gray-200 cursor-pointer"
           onClick={onSelectPresent}
         >
-          {selectedPresent ? `Presente: ${selectedPresent.name}` : "Selecionar um presente"}
+          {selectedPresent ? `Presente: ${selectedPresent}` : "Selecionar um presente"}
         </Button>
 
         <Button

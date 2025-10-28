@@ -15,8 +15,8 @@ export interface Present {
 }
 
 export interface SelectPresentProps {
-    onSelect: (present: Present) => void;
-    selectedPresent: Present | null;
+    onSelect: (present: Present[]) => void;
+    selectedPresent: Present[];
     isOpen: boolean;
     onClose: () => void;
 }

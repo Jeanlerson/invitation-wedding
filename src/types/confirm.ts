@@ -8,5 +8,5 @@ export interface ConfirmProps {
   setCompanions: (v: string) => void;
   onConfirm: () => Promise<void> | void;
   onSelectPresent: () => void;
-  selectedPresent: Present | null;
+  selectedPresent: Present [];
 }
