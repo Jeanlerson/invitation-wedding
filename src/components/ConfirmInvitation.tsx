@@ -72,7 +72,7 @@ export function ConfirmInvitation() {
                     setCompanions={setCompanions}
                     onConfirm={handleConfirm}
                     onSelectPresent={() => setIsModalOpen(true)}
-                    selectedPresent={selectedPresents}
+                    selectedPresents={selectedPresents}
                 />
 
                 {selectedPresents.length > 0 && (
@@ -93,9 +93,15 @@ export function ConfirmInvitation() {
                     isOpen={isModalOpen}
                     onClose={() => setIsModalOpen(false)}
                     selectedPresent={selectedPresents}
-                    onSelect={(presents: Present[]) => {
-                        setSelectedPresents(presents);
-                        setIsModalOpen(false);
+                    onSelect={(present) => {
+                        setSelectedPresents((prev) => {
+                            const alreadySelected = prev.some((p) => p.id === present.id);
+                            if(alreadySelected) {
+                                return prev.filter((p) => p.id !== present.id);
+                            } else {
+                                return [...prev, present];
+                            }
+                        })
                     }}
                 />
 

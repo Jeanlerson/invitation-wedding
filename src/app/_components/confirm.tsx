@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label"
 import type { ConfirmProps } from "@/types/confirm";
 
 export function Confirm(
-  { name, companions, setName, setCompanions, onConfirm, onSelectPresent, selectedPresent }: ConfirmProps
+  { name, companions, setName, setCompanions, onConfirm, onSelectPresent, selectedPresents }: ConfirmProps
 ) {
   return (
     <Card className="w-[320px] bg-[#000D33] text-white rounded-3xl border-none font-poppins shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
@@ -51,7 +51,7 @@ export function Confirm(
           className="w-full rounded-full bg-white text-[#000D33] hover:bg-gray-200 cursor-pointer"
           onClick={onSelectPresent}
         >
-          {selectedPresent ? `Presente: ${selectedPresent}` : "Selecionar um presente"}
+          {selectedPresents.length > 0 ? `Presente(s) selecionado(s): ${selectedPresents.length}` : "Selecionar Presente(s)"}
         </Button>
 
         <Button
