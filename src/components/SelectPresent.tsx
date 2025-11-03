@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function SelectPresent ({ onSelect, selectedPresent, isOpen, onClose }: SelectPresentProps) {
     const [presents, setPresents] = useState<Present[]>([]);
-    const [selectedPresents, setSelectedPresents] = useState<Present[]>([]);
+    const [localSelected, setLocalSelected] = useState<Present[]>([]);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, "presents"), (snapshot) => {
@@ -22,41 +22,34 @@ export default function SelectPresent ({ onSelect, selectedPresent, isOpen, onCl
             console.log("🎁 Presentes carregados do Firebase:", list);
 
             setPresents(list);
+            
         });
 
         return () => unsubscribe();
     }, []);
 
+    useEffect(() => {
+        if(isOpen) {
+            setLocalSelected(selectedPresent);
+        }
+    }, [isOpen, selectedPresent]);
+
     const toggleSelect = (present: Present) => {
-        setSelectedPresents((prev) => {
+        setLocalSelected((prev) => {
             const alreadySelected = prev.some((p) => p.id === present.id);
-            if (alreadySelected) {
-                return prev.filter((p) => p.id !== present.id);
-            } else {
-                return [...prev, present];
-            }
+            const updated = alreadySelected
+                ? prev.filter((p) => p.id !== present.id)
+                : [...prev, present];
+
+            onSelect(updated);
+            return updated;
         });
     };
 
     const handleClose = () => {
-        onSelect(selectedPresents);
         onClose();
-    }
-
-    /*
-    const handleSelect = async (present: Present) => {
-        if(!present.available) return;
-
-        try {
-            await updateDoc(doc(db, "presents", present.id), { available: false });
-            onSelect(present);
-            onClose();
-        } catch (error) {
-            console.error("Erro ao selecionar presente:", error);
-            alert("Erro ao selecionar presente. Tente novamente.");
-        }
     };
-    */
+    
     return (
         <AnimatePresence>
             {isOpen && (
@@ -80,7 +73,7 @@ export default function SelectPresent ({ onSelect, selectedPresent, isOpen, onCl
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                             {presents.length === 0 && <p>Carregando presentes...</p>}
                             {presents.map((present) => {
-                                const isSelected = selectedPresents.some(
+                                const isSelected = localSelected.some(
                                     (p) => p.id === present.id
                                 );
 

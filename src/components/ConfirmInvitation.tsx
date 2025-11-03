@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp, doc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { Confirm } from "@/app/_components/confirm";
 import SelectPresent from "./SelectPresent";
@@ -40,6 +40,7 @@ export function ConfirmInvitation() {
         try {
             const colRef = collection(db, "confirmations");
             console.log("Enviando para o Firestore:", { name, companions, presents: selectedPresents });
+
             await addDoc(colRef, {
                 name: name.trim(),
                 companions: Number(companions) || 0,
@@ -50,6 +51,14 @@ export function ConfirmInvitation() {
                 })),
                 createdAt: serverTimestamp(),
             });
+
+            await Promise.all(
+                selectedPresents.map(async(present) => {
+                    const presentRef = doc(db, "presents", present.id);
+                    await updateDoc(presentRef, { available: false});
+                })
+            );
+
             setSucessMsg("Presença confirmada! Aguardamos por você.");
             setName("");
             setCompanions("0");
@@ -91,17 +100,14 @@ export function ConfirmInvitation() {
 
                 <SelectPresent
                     isOpen={isModalOpen}
-                    onClose={() => setIsModalOpen(false)}
+                    onClose={() => {
+                        setIsModalOpen(false);
+                         // limpa seleção anterior
+                    }}
                     selectedPresent={selectedPresents}
-                    onSelect={(present) => {
-                        setSelectedPresents((prev) => {
-                            const alreadySelected = prev.some((p) => p.id === present.id);
-                            if(alreadySelected) {
-                                return prev.filter((p) => p.id !== present.id);
-                            } else {
-                                return [...prev, present];
-                            }
-                        })
+                    onSelect={(presents) => {           // também array
+                        setSelectedPresents(presents);
+                        setIsModalOpen(false);
                     }}
                 />
 
