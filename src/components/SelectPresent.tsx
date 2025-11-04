@@ -66,9 +66,12 @@ export default function SelectPresent ({ onSelect, selectedPresent, isOpen, onCl
                         animate={{ scale: 1 }}
                         exit={{ scale: 0.8 }}
                     >
-                        <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-xl font-semibold">Selecione um Presente ou mais</h2>
-                            <button onClick={handleClose} className="text-gray-500 hover:text-gray-700">X</button>
+                        <div className="flex justify-between mb-4">
+                            <div>
+                                <h2 className="text-xl font-semibold">Selecione um Presente ou mais</h2>
+                                <p className="text-sm">As imagens são meramente ilustrativas</p>
+                            </div>                          
+                            <button onClick={handleClose} className="text-gray-500 hover:text-gray-700 cursor-pointer">X</button>
                         </div>
 
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -86,8 +89,8 @@ export default function SelectPresent ({ onSelect, selectedPresent, isOpen, onCl
                                         className={`border rounded-lg p-3 transition ${
                                             present.available
                                             ? isSelected
-                                                ? "bg-green-200 border-green-500"
-                                                : "hover:bg-green-100"
+                                                ? "bg-green-200 border-green-500 "
+                                                : "hover:bg-green-100 cursor-pointer"
                                             : "bg-gray-200 cursor-not-allowed opacity-70"
                                         }`}
                                     >
@@ -105,7 +108,7 @@ export default function SelectPresent ({ onSelect, selectedPresent, isOpen, onCl
                         </div>
 
                         <div className="mt-4 text-right">
-                            <Button onClick={handleClose} variant="outline">Fechar</Button>
+                            <Button onClick={handleClose} variant="outline" className="cursor-pointer">Fechar</Button>
                         </div>
                     </motion.div>
                 </motion.div>

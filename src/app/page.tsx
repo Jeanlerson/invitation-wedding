@@ -11,7 +11,7 @@ export default function Page() {
   return (
     <main className="flex flex-col">
       <Header />        
-      <div className="flex justify-center items-center flex-1 max-xl:flex-col">
+      <div className="flex justify-center flex-1 max-xl:flex-col max-xl: items-center">
         <Invitation />
         <ConfirmInvitation />
       </div>

@@ -57,7 +57,7 @@ export function Invitation() {
                     <CarouselPrevious />
                     <CarouselNext />
                 </Carousel>
-                <div className="ml-20  mr-5 text-[#000D33] max-lg:mr-0 max-md:m-0">
+                <div className="ml-20  mr-6 text-[#000D33] max-lg:mr-0 max-md:m-0">
                     <p className="font-poppins text-xl text-justify max-lg:text-base ">
                         Convidamos você para celebrar conosco um dos dias mais especiais de nossas vidas! <span className="text-[#005CB8]">No dia 20 de Dezembro às 15 horas</span>
                         , estaremos celebrando nosso casamento.
