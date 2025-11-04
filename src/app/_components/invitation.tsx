@@ -65,7 +65,7 @@ export function Invitation() {
                     <a href="https://maps.app.goo.gl/BhDNEaK6rfaTuaod9"
                     className="font-poppins text-sm mt-2 cursor-pointer hover:border-b-2 border-[#005CB8] max-sm:text-[11px]"
                     >
-                        <span className="text-[#005CB8]">Local da Festa:</span> Rua Maria Alencar de Souza - 2478
+                        <span className="text-[#005CB8]">Local da Festa:</span> Rua Maria Alencar de Souza - 2478 | Paraíso-Bem-Te-Vi
                     </a>
                     <p className="mt-8 font-great-vibes text-2xl text-center max-lg:text-xl max-lg:mt-3 max-md:mt-5">" Para que todos vejam, e saibam, e considerem, e juntamente entendam que a mão do Senhor fez isso, e o Santo de Israel o criou. "</p>
                     <p className="mt-2 font-great-vibes text-1xl text-right max-lg:text-base">Isaías 41:20</p>

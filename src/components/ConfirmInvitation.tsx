@@ -6,6 +6,7 @@ import { db } from "@/lib/firebase";
 import { Confirm } from "@/app/_components/confirm";
 import SelectPresent from "./SelectPresent";
 import type { Present } from "@/types/present";
+import { toast } from "sonner";
 
 export function ConfirmInvitation() {
     const [name, setName] = useState("");
@@ -20,15 +21,15 @@ export function ConfirmInvitation() {
 
     async function handleConfirm() {
         if(!name.trim()) {
-            setErrorMsg("Por favor, insira seu nome.");
+            toast.error("Por favor, insira seu nome.");
             return;
         }
         if(Number(companions) < 0) {
-            setErrorMsg("Número de acompanhantes inválido.");
+            toast.error("Número de acompanhantes inválido.");
             return;
         }
         if (!checkboxPresent && selectedPresents.length === 0) {
-            setErrorMsg("Por favor, selecione um presente ou marque 'Já presenteei / Tenho outro presente'.");
+            toast.error("Por favor, selecione um presente ou marque 'Já presenteei / Darei outro presente'.");
             return;
         }
 
@@ -59,32 +60,20 @@ export function ConfirmInvitation() {
                 })
             );
 
-            setSucessMsg("Presença confirmada! Aguardamos por você.");
+            toast.success("Presença confirmada! Aguardamos por você.");
             setCheckboxPresent(false);
             setName("");
             setCompanions("0");
             setSelectedPresents([]);
         } catch (err) {
             console.error("Erro ao salvar no Firestone:", err);
-            setErrorMsg("Erro ao confirmar presença. Tente novamente.");
+            toast.error("Erro ao confirmar presença. Tente novamente.");
         } finally {
             setLoading(false);
         }
 
         
     }
-
-    useEffect(() => {
-        if (errorMsg) {
-        alert(errorMsg);
-        }
-    }, [errorMsg]);
-
-    useEffect(() => {
-        if (sucessMsg) {
-        alert(sucessMsg);
-        }
-    }, [sucessMsg]);
 
     return (
             <div>
