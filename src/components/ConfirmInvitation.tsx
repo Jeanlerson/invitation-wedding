@@ -13,6 +13,7 @@ export function ConfirmInvitation() {
     const [loading, setLoading] = useState(false);
     const [sucessMsg, setSucessMsg] = useState<string | null>(null);
     const [errorMsg, setErrorMsg] = useState<string | null>(null);
+    const [checkboxPresent, setCheckboxPresent] = useState(false);
 
     const [selectedPresents, setSelectedPresents] = useState<Present[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,8 +29,8 @@ export function ConfirmInvitation() {
             setErrorMsg("Número de acompanhantes inválido.");
             return;
         }
-        if(selectedPresents.length === 0) {
-            setErrorMsg("Por favor, selecione pelo menos um presente antes de confirmar.");
+        if (!checkboxPresent && selectedPresents.length === 0) {
+            setErrorMsg("Por favor, selecione um presente ou marque 'Já presenteei / Tenho outro presente'.");
             return;
         }
 
@@ -44,11 +45,12 @@ export function ConfirmInvitation() {
             await addDoc(colRef, {
                 name: name.trim(),
                 companions: Number(companions) || 0,
-                presents: selectedPresents.map((p) => ({
-                    id: p.id,
-                    name: p.name,
-                    image: p.image,
-                })),
+                presents: checkboxPresent
+                    ? []
+                    :selectedPresents.map((p) => ({
+                        name: p.name,
+                    })),
+                checkboxPresent,
                 createdAt: serverTimestamp(),
             });
 
@@ -60,6 +62,7 @@ export function ConfirmInvitation() {
             );
 
             setSucessMsg("Presença confirmada! Aguardamos por você.");
+            setCheckboxPresent(false);
             setName("");
             setCompanions("0");
             setSelectedPresents([]);
@@ -80,8 +83,15 @@ export function ConfirmInvitation() {
                     setName={setName}
                     setCompanions={setCompanions}
                     onConfirm={handleConfirm}
-                    onSelectPresent={() => setIsModalOpen(true)}
+                    onSelectPresent={() => { 
+                            if(!checkboxPresent) {
+                                setIsModalOpen(true);
+                            }
+                        }
+                    }
                     selectedPresents={selectedPresents}
+                    checkboxPresent={checkboxPresent}
+                    setCheckboxPresent={setCheckboxPresent}
                 />
 
                 {selectedPresents.length > 0 && (

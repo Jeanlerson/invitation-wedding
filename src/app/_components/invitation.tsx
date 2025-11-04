@@ -17,14 +17,25 @@ export function Invitation() {
         "/img/foto3.jpg",
         "/img/foto4.jpg",
         "/img/foto5.jpg",
+        "/img/foto6.jpg",
+        "/img/foto7.jpg",
+        "/img/foto8.jpg",
+        "/img/foto9.jpg",
+        "/img/foto10.jpg",
+        "/img/foto11.jpg",
+        "/img/foto12.jpg",
+        "/img/foto13.jpg",
+        "/img/foto14.jpg",
+        "/img/foto15.jpg",
+        "/img/foto16.jpg",
     ];
 
 
     return (
-        <section className="w-[820]">
+        <section className="max-w-[820px]">
             
             <div className="flex justify-center">                
-                <Carousel className="w-full max-w-full  bg-[#fff] shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
+                <Carousel className="w-[350px]  bg-[#fff] shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
                     <CarouselContent>
                         {img.map((src, index) => (
                             <CarouselItem key={index}>
@@ -34,8 +45,8 @@ export function Invitation() {
                                             <Image
                                                 src={src}
                                                 alt={`foto${index + 1}`}
-                                                width={400}
-                                                height={400}
+                                                width={300}
+                                                height={300}
                                                 className="h-full w-full object-cover rounded-3xl"
                                             />
                                         </CardContent>

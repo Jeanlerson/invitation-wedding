@@ -1,7 +1,7 @@
 "use client";
 
 import { Present, SelectPresentProps } from "@/types/present";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { db } from "@/lib/firebase";
 import { collection, onSnapshot, updateDoc, doc } from "firebase/firestore";
 import Image from "next/image";
@@ -37,14 +37,15 @@ export default function SelectPresent ({ onSelect, selectedPresent, isOpen, onCl
     const toggleSelect = (present: Present) => {
         setLocalSelected((prev) => {
             const alreadySelected = prev.some((p) => p.id === present.id);
-            const updated = alreadySelected
+            return alreadySelected
                 ? prev.filter((p) => p.id !== present.id)
                 : [...prev, present];
-
-            onSelect(updated);
-            return updated;
         });
     };
+
+    useEffect(() => {
+        onSelect(localSelected);
+    }, [localSelected])
 
     const handleClose = () => {
         onClose();

@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label"
 import type { ConfirmProps } from "@/types/confirm";
 
 export function Confirm(
-  { name, companions, setName, setCompanions, onConfirm, onSelectPresent, selectedPresents }: ConfirmProps
+  { name, companions, setName, setCompanions, onConfirm, onSelectPresent, checkboxPresent, setCheckboxPresent, selectedPresents }: ConfirmProps
 ) {
   return (
     <Card className="w-[320px] bg-[#000D33] text-white rounded-3xl border-none font-poppins shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
@@ -53,6 +53,22 @@ export function Confirm(
         >
           {selectedPresents.length > 0 ? `Presente(s) selecionado(s): ${selectedPresents.length}` : "Selecionar Presente(s)"}
         </Button>
+
+        <div className="mb-4 flex items-center gap-2">
+            <input
+                type="checkbox"
+                id="checkboxPresent"
+                checked={checkboxPresent}
+                onChange={() => {
+                const newValue = !checkboxPresent;
+                setCheckboxPresent(newValue);
+                }}
+                className="w-4 h-4 accent-[#005CB8] cursor-pointer"
+            />
+            <label htmlFor="checkboxPresent" className="text-[#FFF] text-[13px] cursor-pointer">
+                Já presenteei / Darei outro presente
+            </label>
+          </div>
 
         <Button
           className="w-full rounded-full bg-[#001A66] hover:bg-[#002B99] cursor-pointer"

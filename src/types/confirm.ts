@@ -8,5 +8,7 @@ export interface ConfirmProps {
   setCompanions: (v: string) => void;
   onConfirm: () => Promise<void> | void;
   onSelectPresent: () => void;
+  checkboxPresent: boolean;
+  setCheckboxPresent: (v: boolean) => void;
   selectedPresents: Present [];
 }

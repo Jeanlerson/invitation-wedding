@@ -5,17 +5,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
 export function Countdown() {
-  // 🕒 Data do evento (altere conforme desejar)
-  const targetDate = new Date("2025-12-20T15:00:00-03:00").getTime();
 
-  const [timeLeft, setTimeLeft] = useState(targetDate - Date.now());
+  const targetDate = new Date("2025-12-20T15:00:00-03:00").getTime();
+  
+  const [timeLeft, setTimeLeft] = useState(0); // Evita cálculo no SSR
+  const [mounted, setMounted] = useState(false); // Garante renderização só no cliente
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(targetDate - Date.now());
-    }, 1000);
+    setMounted(true);
+    const update = () => setTimeLeft(targetDate - Date.now());
+    update();
+
+    const timer = setInterval(update, 1000);
     return () => clearInterval(timer);
   }, [targetDate]);
+
+  if (!mounted) return null; // Evita renderização no servidor
+
 
   if (timeLeft <= 0) {
     return (
