@@ -33,7 +33,6 @@ export function Invitation() {
 
     return (
         <section className="max-w-[820px]">
-            
             <div className="flex justify-center">                
                 <Carousel className="w-[350px]  bg-[#fff] shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
                     <CarouselContent>

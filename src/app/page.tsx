@@ -11,7 +11,7 @@ export default function Page() {
   return (
     <main className="min-h-screen min-w-screen flex flex-col">
       <Header />        
-      <div className="flex justify-center items-center flex-1">
+      <div className="flex justify-center items-center flex-1 min-lg:flex-col">
         <Invitation />
         <ConfirmInvitation />
       </div>

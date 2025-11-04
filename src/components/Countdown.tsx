@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export function Countdown() {
 
   const targetDate = new Date("2025-12-20T15:00:00-03:00").getTime();
-  
+
   const [timeLeft, setTimeLeft] = useState(0); // Evita cálculo no SSR
   const [mounted, setMounted] = useState(false); // Garante renderização só no cliente
 
@@ -67,7 +67,7 @@ export function Countdown() {
               transition={{ duration: 0.3 }}
               className="flex flex-col items-center"
             >
-              <span className="text-4xl font-poppins text-[#000D33] transition-all duration-500">
+              <span className="text-4xl font-poppins text-[#000D33] transition-all duration-500 w-[2.5ch] inline-block text-center">
                 {value.toString().padStart(2, "0")}
               </span>
               <span className="font-poppins text-sm text-gray-600 mt-1 tracking-wider uppercase">

@@ -8,7 +8,7 @@ export function Confirm(
   { name, companions, setName, setCompanions, onConfirm, onSelectPresent, checkboxPresent, setCheckboxPresent, selectedPresents }: ConfirmProps
 ) {
   return (
-    <Card className="w-[320px] bg-[#000D33] text-white rounded-3xl border-none font-poppins shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
+    <Card className="w-[320px] bg-[#000D33] text-white rounded-3xl border-none font-poppins shadow-[0_10px_30px_rgba(0,0,0,0.4)] min-lg:mt-20 mb-15">
       <CardHeader>
         <CardTitle className="text-center text-xl">
           Confirme sua presença
