@@ -9,9 +9,9 @@ import { ConfirmInvitation } from "@/components/ConfirmInvitation";
 
 export default function Page() {
   return (
-    <main className="min-h-screen min-w-screen flex flex-col">
+    <main className="flex flex-col">
       <Header />        
-      <div className="flex justify-center items-center flex-1 min-lg:flex-col">
+      <div className="flex justify-center items-center flex-1 max-xl:flex-col">
         <Invitation />
         <ConfirmInvitation />
       </div>

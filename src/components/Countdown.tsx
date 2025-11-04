@@ -47,13 +47,13 @@ export function Countdown() {
 
   return (
     <Card className="text-center bg-transparent border-0">
-      <CardHeader>
-        <CardTitle className="text-4xl font-great-vibes text-[#000D33]">
+      <CardHeader className="max-lg:mb-[-20px]">
+        <CardTitle className="text-4xl font-great-vibes text-[#000D33] max-lg:text-2xl">
           Contagem Regressiva
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex justify-center gap-4 sm:gap-6">
+        <div className="flex justify-center gap-4 sm:gap-6 max-lg:sm:gap-3">
           {[
             { label: "Dias", value: days },
             { label: "Horas", value: hours },
@@ -67,10 +67,10 @@ export function Countdown() {
               transition={{ duration: 0.3 }}
               className="flex flex-col items-center"
             >
-              <span className="text-4xl font-poppins text-[#000D33] transition-all duration-500 w-[2.5ch] inline-block text-center">
+              <span className="text-4xl font-poppins text-[#000D33] transition-all duration-500 w-[2.5ch] inline-block text-center max-lg:text-2xl">
                 {value.toString().padStart(2, "0")}
               </span>
-              <span className="font-poppins text-sm text-gray-600 mt-1 tracking-wider uppercase">
+              <span className="font-poppins text-sm text-gray-600 mt-1 tracking-wider uppercase max-lg:text-xs">
                 {label}
               </span>
             </motion.div>

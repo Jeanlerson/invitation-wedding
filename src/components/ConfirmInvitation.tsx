@@ -97,7 +97,7 @@ export function ConfirmInvitation() {
                 {selectedPresents.length > 0 && (
                     <div className="mt-2 flex gap-3 flex-wrap">
                     {selectedPresents.map((p) => (
-                        <div key={p.id} className="text-center">
+                        <div key={p.id} className="text-center max-xl:mb-5">
                         {/* imagem - ajuste width/height conforme necessário */}
                         <img src={p.image} alt={p.name} className="w-20 h-20 object-cover rounded-md" />
                         <div className="text-sm">{p.name}</div>
