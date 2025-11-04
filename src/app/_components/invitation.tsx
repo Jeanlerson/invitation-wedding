@@ -34,7 +34,7 @@ export function Invitation() {
     return (
         <section className="max-w-[820px] max-lg:w-[620px] max-md:w-[400px] max-sm:w-[290px]">
             <div className="flex justify-center max-md:flex-col-reverse max-md:items-center">                
-                <Carousel className="w-[350px] bg-[#fff] shadow-[0_10px_30px_rgba(0,0,0,0.4)] max-lg:w-[300px] max-lg:h-[435px] max-md:mt-10 max-sm:w-[250px] max-sm:h-[355px]">
+                <Carousel className="w-[350px] bg-[#fff] max-lg:w-[300px] max-lg:h-[435px] max-md:mt-10 max-sm:w-[250px] max-sm:h-[355px]">
                     <CarouselContent>
                         {img.map((src, index) => (
                             <CarouselItem key={index}>
@@ -57,9 +57,17 @@ export function Invitation() {
                     <CarouselPrevious />
                     <CarouselNext />
                 </Carousel>
-                <div className="ml-20 mt-6 mr-5 text-[#000D33] max-lg:mr-0 max-lg:mt-0 max-md:m-0">
-                    <p className="font-poppins text-xl text-justify max-lg:text-base">Convidamos você para celebrar conosco um dos dias mais especiais de nossas vidas! <span className="text-[#005CB8]">No dia 20 de Dezembro às 15 horas</span>, estaremos celebrando nosso casamento.</p>
-                    <p className="mt-10 font-great-vibes text-2xl text-center max-lg:text-xl max-lg:mt-3 max-md:mt-5">" Para que todos vejam, e saibam, e considerem, e juntamente entendam que a mão do Senhor fez isso, e o Santo de Israel o criou. "</p>
+                <div className="ml-20  mr-5 text-[#000D33] max-lg:mr-0 max-md:m-0">
+                    <p className="font-poppins text-xl text-justify max-lg:text-base ">
+                        Convidamos você para celebrar conosco um dos dias mais especiais de nossas vidas! <span className="text-[#005CB8]">No dia 20 de Dezembro às 15 horas</span>
+                        , estaremos celebrando nosso casamento.
+                    </p>
+                    <a href="https://maps.app.goo.gl/BhDNEaK6rfaTuaod9"
+                    className="font-poppins text-sm mt-2 cursor-pointer hover:border-b-2 border-[#005CB8] max-sm:text-[11px]"
+                    >
+                        <span className="text-[#005CB8]">Local da Festa:</span> Rua Maria Alencar de Souza - 2478
+                    </a>
+                    <p className="mt-8 font-great-vibes text-2xl text-center max-lg:text-xl max-lg:mt-3 max-md:mt-5">" Para que todos vejam, e saibam, e considerem, e juntamente entendam que a mão do Senhor fez isso, e o Santo de Israel o criou. "</p>
                     <p className="mt-2 font-great-vibes text-1xl text-right max-lg:text-base">Isaías 41:20</p>
                     <Countdown />
                 </div>

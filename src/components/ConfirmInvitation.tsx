@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addDoc, collection, serverTimestamp, doc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { Confirm } from "@/app/_components/confirm";
@@ -17,8 +17,6 @@ export function ConfirmInvitation() {
 
     const [selectedPresents, setSelectedPresents] = useState<Present[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-
 
     async function handleConfirm() {
         if(!name.trim()) {
@@ -75,6 +73,19 @@ export function ConfirmInvitation() {
 
         
     }
+
+    useEffect(() => {
+        if (errorMsg) {
+        alert(errorMsg);
+        }
+    }, [errorMsg]);
+
+    useEffect(() => {
+        if (sucessMsg) {
+        alert(sucessMsg);
+        }
+    }, [sucessMsg]);
+
     return (
             <div>
                 <Confirm 
@@ -120,16 +131,6 @@ export function ConfirmInvitation() {
                         setIsModalOpen(false);
                     }}
                 />
-
-                {/* Mensagem de erro */}
-                {errorMsg && (
-                    <p className="text-red-500 text-sm font-medium mt-2">{errorMsg}</p>
-                )}
-
-                {/* Mensagem de sucesso */}
-                {sucessMsg && (
-                    <p className="text-green-500 text-sm font-medium mt-2">{sucessMsg}</p>
-                )}
             </div>
         );
 }
