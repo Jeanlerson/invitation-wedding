@@ -94,13 +94,22 @@ export default function SelectPresent ({ onSelect, selectedPresent, isOpen, onCl
                                             : "bg-gray-200 cursor-not-allowed opacity-70"
                                         }`}
                                     >
-                                        <Image
-                                            src={present.image}
-                                            alt={present.name}
-                                            width={150}
-                                            height={150}
-                                            className="mx-auto rounded-lg"
-                                        />
+                                        <div className="relative">
+                                            <Image
+                                                src={present.image}
+                                                alt={present.name}
+                                                width={150}
+                                                height={150}
+                                                className="mx-auto rounded-lg"
+                                            />
+                                            {!present.available && (
+                                                <div className="absolute inset-0 bg-black/50 flex items-center justify-center rounded-lg">
+                                                <p className="text-white font-semibold text-center text-sm px-2">
+                                                    Presente já selecionado
+                                                </p>
+                                                </div>
+                                            )}
+                                        </div>
                                         <p className="text-center mt-2 font-medium">{present.name}</p>
                                     </button>
                                 )
